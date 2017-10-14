@@ -1,0 +1,49 @@
+{
+  "name": "mocha-in-browser",
+  "version": "0.0.1",
+  "description": "mocha in browser which can auto load test cases from user config file and can also provide useful test util methods",
+  "main": "lib/main.js",
+  "scripts": {
+    "init": "browserify src/init/main.js -o lib/main.js",
+    "test": "node_modules/.bin/nyc --require babel-core/register node_modules/.bin/mocha",
+    "travis": "npm run build && node_modules/.bin/nyc --reporter=lcov --require babel-core/register node_modules/.bin/mocha",
+    "dev": "node ./src/index.js",
+    "lint": "eslint src/**/**/*.js",
+    "build": "./node_modules/.bin/babel src/ -d lib && cp -r src/lib lib && npm run init ",
+    "install": "sudo tnpm install ./ -g"
+  },
+  "keywords": [
+    "test"
+  ],
+  "dependencies": {
+    "babel-runtime": "^6.25.0",
+    "browserify": "^14.4.0",
+    "chai": "^4.1.0",
+    "chalk": "^2.1.0",
+    "glob": "^7.1.2",
+    "istanbul": "^0.4.5",
+    "journey": "^0.4.0-pre-3",
+    "lodash": "^4.17.4",
+    "mocha": "^3.2.0",
+    "opts": "^1.2.6",
+    "traverse": "^0.6.6"
+  },
+  "author": "haomou.chh",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.2",
+    "babel-eslint": "^6.0.2",
+    "babel-istanbul": "^0.7.0",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-polyfill": "^6.7.2",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^2.8.0",
+    "nyc": "^11.1.0"
+  }
+}
