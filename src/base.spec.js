@@ -82,7 +82,9 @@ class mainSpecBase {
 								this.finish(nightmare, done);
 							}
 						}
-					}).then();
+					}).then().catch((error) => {
+						this.finish(nightmare, done, error);
+					});
 			});
 		});
 	}
@@ -99,13 +101,16 @@ class mainSpecBase {
 
 				if (!nightmare || nightmare.ended) {
 					nightmare = Nightmare({
-						show: !headless
+						show: !headless,
+						waitTimeout: 10000,
+						loadTimeout: 10000
 					});
 					nightmare
 						.viewport(width, height)
 						.useragent(ua)
 						.goto(addr)
 						.inject('js', defaultUtilPath)
+						
 
 				}
 			});
