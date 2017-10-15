@@ -38,7 +38,7 @@ class mainSpecBase {
 			closeAfter: true
 		}, config);
 
-		// this.executeCommonTest();
+		this.executeCommonTest();
 		this.executeE2ETest();
 	}
 	finish(nightmare, done, err = "") {
