@@ -41,14 +41,14 @@ class mainSpecBase {
 		// this.executeCommonTest();
 		this.executeE2ETest();
 	}
-	finish(nightmare, done) {
+	finish(nightmare, done, err = "") {
 		let { closeAfter } = this.config;
 		if (closeAfter) {
 			nightmare.end().then(() => {
-				done();
+				done(err);
 			});
 		} else {
-			done();
+			done(err);
 		}
 	}
     /**
@@ -96,8 +96,8 @@ class mainSpecBase {
 			let nightmare;
 			beforeEach(function () {
 				// 在本区块的每个测试用例之前执行
-				
-				if (!nightmare) {
+
+				if (!nightmare || nightmare.ended) {
 					nightmare = Nightmare({
 						show: !headless
 					});
@@ -106,12 +106,13 @@ class mainSpecBase {
 						.useragent(ua)
 						.goto(addr)
 						.inject('js', defaultUtilPath)
+
 				}
 			});
 			this.getE2eCases().forEach((casen) => {
 				it(casen.title, (done) => {
-					casen.action(expect, done, () => {
-						this.finish(nightmare, done);
+					casen.action(expect, done, (err) => {
+						this.finish(nightmare, done, err);
 					}, nightmare);
 				});
 			})
