@@ -1,6 +1,6 @@
 {
   "name": "mocha-in-browser",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "mocha in browser which can auto load test cases from user config file and can also provide useful test util methods",
   "main": "lib/main.js",
   "scripts": {
