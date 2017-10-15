@@ -9,8 +9,7 @@
     "travis": "npm run build && node_modules/.bin/nyc --reporter=lcov --require babel-core/register node_modules/.bin/mocha",
     "dev": "node ./src/index.js",
     "lint": "eslint src/**/**/*.js",
-    "build": "rm -fr lib && mkdir lib && cp src/base.spec.js lib/base.spec.js && cp src/init/util.js lib/util.js && npm run init ",
-    "install": "sudo tnpm install ./ -g"
+    "build": "rm -fr lib && mkdir lib && cp src/base.spec.js lib/base.spec.js && cp src/init/util.js lib/util.js && npm run init "
   },
   "keywords": [
     "test"
