@@ -4,12 +4,12 @@
   "description": "mocha in browser which can auto load test cases from user config file and can also provide useful test util methods",
   "main": "lib/main.js",
   "scripts": {
-    "init": "rm -fr lib && cp -r src/lib lib && browserify src/init/main.js -o lib/main.js",
+    "init": " cp -r src/lib ./ && browserify src/init/main.js -o lib/main.js",
     "test": "node_modules/.bin/nyc --require babel-core/register node_modules/.bin/mocha",
     "travis": "npm run build && node_modules/.bin/nyc --reporter=lcov --require babel-core/register node_modules/.bin/mocha",
     "dev": "node ./src/index.js",
     "lint": "eslint src/**/**/*.js",
-    "build": "./node_modules/.bin/babel src/ -d lib && npm run init ",
+    "build": "rm -fr lib && mkdir lib && cp src/base.spec.js lib/base.spec.js && cp src/init/util.js lib/util.js && npm run init ",
     "install": "sudo tnpm install ./ -g"
   },
   "keywords": [
@@ -30,9 +30,6 @@
   },
   "author": "chalecao",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "http://registry.npm.alibaba-inc.com"
-  },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.2",
