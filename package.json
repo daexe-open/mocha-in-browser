@@ -1,6 +1,6 @@
 {
   "name": "mocha-in-browser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "mocha in browser which can auto load test cases from user config file and can also provide useful test util methods",
   "main": "lib/main.js",
   "scripts": {
@@ -26,9 +26,9 @@
     "lodash": "^4.17.4",
     "mocha": "^4.0.1",
     "opts": "^1.2.6",
-	"traverse": "^0.6.6",
-	"mocha-generators": "^2.0.0",
-	"nightmare": "^2.10.0"
+    "traverse": "^0.6.6",
+    "mocha-generators": "^2.0.0",
+    "nightmare": "^2.10.0"
   },
   "author": "chalecao",
   "license": "MIT",
